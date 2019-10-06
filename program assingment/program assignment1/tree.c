@@ -87,16 +87,24 @@ inline bool checkBSP(Node* node){
 
 
     if(node_left -> max > node -> data  && node_left != NULL){
-        node -> state = false;
-        return node -> state;
+       // node -> state = false;
+        return false;
     };
     if(node_right -> min < node -> data && node_right != NULL){
-        node -> state = false;
-        return node -> state;
+       // node -> state = false;
+        return false;
     };
 
+    if(checkBSP(node-> left) == false && node_left != NULL){
+        return false;
+    };
+
+    if(checkBSP(node-> right) == false && node_right != NULL){
+        return false
+    }
+
     //cout << node_left-> state << endl << node_right-> state;
-    return ((node_left-> state) && (node_right -> state));
+    return true;
 
 }
 int main()
